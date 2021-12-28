@@ -57,7 +57,7 @@ def main():
         d_df = file_viewer(file_df=file)
         columns_df = d_df.columns
         col1, col2 = st.columns(2)
-
+        # Checking Null values and shows Statistical Analysis
         with st.container():
             with col1:
                 st.header("Check for Null Values")
@@ -67,12 +67,12 @@ def main():
                 st.header("Statistical Analysis of Data")
                 if st.button("Show Statistical Analysis.."):
                     describe_stats(file_df=d_df)
-
+        # Showing correlation maps
         with st.container():
             st.header("Showing Correlation between Independent Features.")
             if st.button("Show"):
                 correlation_plot(d_df)
-
+        # Selecting target feature
         with st.container():
             st.header("Select the target or dependent column")
             option = st.selectbox(
@@ -88,12 +88,12 @@ def main():
                 with ind_col:
                     st.subheader("Independent Features")
                     st.dataframe(independent_col)
-
+        # Showing Pair plots
         with st.container():
             st.header("Showing the relationship between features")
             if st.button("Show the plot"):
                 pair_plot(d_df)
-
+        # Checking the outliers using boxplots
         with st.container():
             st.header("Showing Outliers in the feature.")
             feature = st.selectbox(
